@@ -26,8 +26,14 @@
 }
 
 .hero-video {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
   object-fit: cover;
   will-change: transform;
 }
@@ -42,10 +48,13 @@
 
 .hero-content {
   position: relative;
-  z-index: 3;
-  text-align: center;
-  max-width: 900px;
-  padding: 0 var(--space-6);
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+  padding: var(--space-8);
+  border-radius: var(--radius-3xl);
 }
 
 .hero-badge {
@@ -144,19 +153,28 @@
 /* ── SCROLL INDICATOR ── */
 .scroll-indicator {
   position: absolute;
-  bottom: 40px;
+  bottom: var(--space-8);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
-  color: #999999;
-  font-size: 0.7rem;
+  gap: var(--space-2);
+  font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  animation: float-indicator 3s ease-in-out infinite;
+  /* MUDE PARA PRETO: Estava branco/claro, agora fica escuro para ler no chão claro */
+  color: var(--black); 
+  z-index: 2;
+}
+
+/* Escurecer a linha do SCROLL */
+.scroll-indicator::after {
+  content: "";
+  width: 1px;
+  height: 40px;
+  /* MUDE PARA PRETO TRANSLÚCIDO */
+  background: rgba(10, 11, 13, 0.4); 
 }
 
 .scroll-indicator-line {
