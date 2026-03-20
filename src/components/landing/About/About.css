@@ -1,124 +1,158 @@
 /* ============================================
-   ABOUT SECTION — DIRECTOR CARD
+   ABOUT SECTION — LAYOUT DIVIDIDO E HOTSPOTS
    ============================================ */
 
-.director-card {
-  display: flex;
+.about-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
   align-items: center;
-  gap: var(--space-10);
-  padding: var(--space-12);
-  background: #f8f8f8;
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius-3xl);
+}
+
+/* ── LADO ESQUERDO: IMAGEM INTERATIVA ── */
+.about-image-wrapper {
   position: relative;
-  overflow: hidden;
-}
-
-/* A linha dourada brilhante no topo do cartão */
-.director-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--gradient-gold);
-}
-
-/* O brilho radial suave no fundo do cartão */
-.director-card::after {
-  content: "";
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(212, 175, 55, 0.06) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
-.director-avatar {
-  width: 150px;
-  height: 150px;
+  width: 100%;
   border-radius: var(--radius-2xl);
-  /* object-fit: cover garante que a foto preencha o espaço sem amassar */
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 2px solid var(--gold); /* Uma bordinha dourada para dar destaque à foto */
+  overflow: visible; /* Permite que o cartão de vidro saia um pouco da imagem se necessário */
 }
 
-.director-info {
-  flex: 1;
-  position: relative;
-  z-index: 1;
+.brasilia-map {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-md);
 }
 
-.director-name {
+/* Os "Pins" que ficam sobre a imagem */
+.hotspot {
+  position: absolute;
+  /* O transform garante que o ponto central do pin fique exatamente na coordenada top/left */
+  transform: translate(-50%, -50%); 
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* A bolinha pulsante */
+.hotspot-pin {
+  width: 16px;
+  height: 16px;
+  background-color: var(--gold);
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  transition: all 0.3s ease;
+}
+
+.hotspot:hover .hotspot-pin {
+  transform: scale(1.3);
+  background-color: #ffffff;
+  border-color: var(--gold);
+}
+
+/* O Cartão de Vidro (Glassmorphism) Oculto por Padrão */
+.glass-card {
+  position: absolute;
+  bottom: 30px; /* Aparece acima do pin */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 220px;
+  padding: var(--space-4);
+  
+  /* Efeito de Vidro! */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  
+  /* Escondido por padrão */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s var(--ease-elegant);
+  pointer-events: none; /* Evita que o rato pisque ao passar do pin para o card */
+  text-align: center;
+}
+
+/* Revelar o cartão quando o rato passa no hotspot */
+.hotspot:hover .glass-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0); /* Sobe suavemente */
+}
+
+.glass-card h4 {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--black);
+  margin-bottom: 4px;
   font-weight: 700;
-  margin-bottom: var(--space-1);
 }
 
-.director-role {
+.glass-card p {
   font-size: 0.75rem;
+  color: var(--text-dark);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ── LADO DIREITO: TEXTO ── */
+.about-text-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-text-header {
+  text-align: center; /* Títulos centralizados */
+  margin-bottom: var(--space-8);
+}
+
+.about-date {
+  display: inline-block;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: var(--space-3);
 }
 
-.director-desc {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: #777777;
-  line-height: 1.7;
+.about-title-main {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: var(--space-2);
 }
 
-/* ── RESPONSIVIDADE ABOUT ── */
-
-@media (max-width: 768px) {
-  .director-card {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-/* ============================================
-  ABOUT SECTION — ILUSTRAÇÃO 3D
-============================================ */
-
-.about-illustration {
-  display: flex;
-  justify-content: center;
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-12); /* Dá um respiro antes do cartão da Diretora */
+.about-title-sub {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-dark-secondary);
+  line-height: 1.5;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
-.floating-city {
-  max-width: 700px;
-  width: 100%; /* Impede que a imagem fique gigante no monitor */
-  height: auto;
-  border-radius: var(--radius-2xl); /* Arredonda as pontas para combinar com o site */
-  box-shadow: var(--shadow-md);
-  
-  /* A magia da animação acontece aqui */
-  animation: levitate 6s ease-in-out infinite;
+.about-body {
+  /* Texto Justificado */
+  text-align: justify;
 }
 
-/* Keyframe para o movimento suave de subir e descer */
-@keyframes levitate {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px); /* Sobe 15 pixels na metade do tempo */
-  }
-  100% {
-    transform: translateY(0);
+.about-body p {
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.8;
+  margin-bottom: var(--space-4);
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 1024px) {
+  .about-split-layout {
+    grid-template-columns: 1fr; /* Cai para uma coluna em telas menores */
+    gap: var(--space-8);
   }
 }
