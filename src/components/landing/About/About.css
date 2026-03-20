@@ -1,0 +1,124 @@
+/* ============================================
+   ABOUT SECTION — DIRECTOR CARD
+   ============================================ */
+
+.director-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-12);
+  background: #f8f8f8;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-3xl);
+  position: relative;
+  overflow: hidden;
+}
+
+/* A linha dourada brilhante no topo do cartão */
+.director-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-gold);
+}
+
+/* O brilho radial suave no fundo do cartão */
+.director-card::after {
+  content: "";
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.director-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: var(--radius-2xl);
+  /* object-fit: cover garante que a foto preencha o espaço sem amassar */
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--gold); /* Uma bordinha dourada para dar destaque à foto */
+}
+
+.director-info {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.director-name {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+
+.director-role {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-3);
+}
+
+.director-desc {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #777777;
+  line-height: 1.7;
+}
+
+/* ── RESPONSIVIDADE ABOUT ── */
+
+@media (max-width: 768px) {
+  .director-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* ============================================
+  ABOUT SECTION — ILUSTRAÇÃO 3D
+============================================ */
+
+.about-illustration {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-12); /* Dá um respiro antes do cartão da Diretora */
+}
+
+.floating-city {
+  max-width: 700px;
+  width: 100%; /* Impede que a imagem fique gigante no monitor */
+  height: auto;
+  border-radius: var(--radius-2xl); /* Arredonda as pontas para combinar com o site */
+  box-shadow: var(--shadow-md);
+  
+  /* A magia da animação acontece aqui */
+  animation: levitate 6s ease-in-out infinite;
+}
+
+/* Keyframe para o movimento suave de subir e descer */
+@keyframes levitate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px); /* Sobe 15 pixels na metade do tempo */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

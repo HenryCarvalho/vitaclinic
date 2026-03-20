@@ -1,0 +1,13 @@
+.loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #ffffff; display: flex;
+  align-items: center; justify-content: center;
+  flex-direction: column; gap: var(--space-6);
+  transition: opacity 0.8s var(--ease-elegant), visibility 0.8s;
+}
+.loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-logo { width: 80px; height: auto; animation: loader-pulse 1.5s ease-in-out infinite; }
+.loader-bar { width: 120px; height: 2px; background: #e8e8e8; border-radius: 1px; overflow: hidden; }
+.loader-bar-fill { width: 0%; height: 100%; background: var(--gradient-gold); animation: loader-fill 1.8s var(--ease-elegant) forwards; }
+@keyframes loader-pulse { 0%, 100% { opacity: 1; filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3)); } 50% { opacity: 0.6; filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5)); } }
+@keyframes loader-fill { 0% { width: 0%; } 100% { width: 100%; } }

@@ -1,0 +1,61 @@
+/* ============================================
+   MARQUEE SECTION (FAIXA ROLANTE)
+   ============================================ */
+
+.marquee-section {
+  overflow: hidden;
+  padding: var(--space-6) 0;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  background: #ffffff;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  /* A animação dura 40s, é linear (sem acelerar ou desacelerar) e infinita */
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.marquee-item {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  white-space: nowrap;
+  padding: 0 var(--space-8);
+  color: transparent;
+  /* Faz o texto vazado (apenas o contorno) */
+  -webkit-text-stroke: 1.5px rgba(10, 11, 13, 0.4);
+  transition: all 0.5s;
+}
+
+.marquee-item.filled {
+  -webkit-text-stroke: none;
+  background: var(--gradient-gold-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.8;
+}
+
+.marquee-separator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin: 0 var(--space-6);
+  opacity: 0.3;
+  align-self: center;
+}
+
+/* A magia do movimento horizontal */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Move metade do conteúdo para a esquerda para fazer o loop perfeito */
+    transform: translateX(-50%);
+  }
+}

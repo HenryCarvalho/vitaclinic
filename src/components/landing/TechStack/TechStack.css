@@ -1,0 +1,64 @@
+/* ============================================
+   TECH STACK SECTION
+   ============================================ */
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.tech-card {
+  text-align: center;
+  padding: var(--space-8) var(--space-5);
+  background: #f8f8f8;
+  border: 1px solid #e8e8e8;
+  border-radius: var(--radius-xl);
+  transition: all var(--duration-moderate) var(--ease-elegant);
+}
+
+/* Efeito ao passar o rato: borda dourada, sombra sutil e elevação */
+.tech-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold-sm);
+}
+
+.tech-card-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-4);
+  display: block;
+}
+
+.tech-card-name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.tech-card-desc {
+  font-size: 0.75rem;
+  color: #999999;
+  letter-spacing: 0.05em;
+}
+
+/* ── RESPONSIVIDADE TECH STACK ── */
+
+@media (max-width: 1024px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+}

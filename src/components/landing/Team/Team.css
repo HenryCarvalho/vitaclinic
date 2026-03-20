@@ -1,0 +1,140 @@
+/* ============================================
+   TEAM SECTION — PARALLAX FLOAT
+   ============================================ */
+
+.team-section {
+  padding: var(--space-24) var(--space-8);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.team-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.team-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-3xl);
+  overflow: hidden;
+}
+
+.team-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-3xl);
+  /* Esta transição longa ajuda o Parallax a ficar ainda mais suave */
+  transition: transform var(--duration-glacial) var(--ease-elegant);
+}
+
+/* Moldura decorativa que fica sobreposta à imagem */
+.team-image-frame {
+  position: absolute;
+  inset: -2px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-3xl);
+  pointer-events: none;
+}
+
+/* Efeito de brilho desfocado na base da imagem */
+.team-image-glow {
+  position: absolute;
+  bottom: -20%;
+  left: 10%;
+  width: 80%;
+  height: 40%;
+  background: radial-gradient(
+    ellipse,
+    rgba(212, 175, 55, 0.15) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+.team-info {
+  padding: var(--space-6) 0;
+}
+
+.team-members {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-top: var(--space-10);
+}
+
+/* Estilo do cartão de cada médico */
+.member-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: #f8f8f8;
+  border: 1px solid #e8e8e8;
+  border-radius: var(--radius-xl);
+  transition: all var(--duration-moderate) var(--ease-elegant);
+}
+
+.member-card:hover {
+  border-color: var(--border-gold);
+  background: rgba(28, 88, 140, 0.08);
+  transform: translateX(4px);
+}
+
+.member-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: var(--radius-lg);
+  object-fit: cover; /* Impede a distorção da foto */
+  flex-shrink: 0;
+  border: 2px solid var(--gold); /* Bordinha dourada elegante */
+  box-shadow: var(--shadow-sm);
+}
+
+/* Variações de cor dos avatares */
+.member-avatar.gold {
+  background: var(--gold-muted);
+  color: var(--gold);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.member-avatar.blue {
+  background: var(--blue-muted);
+  color: var(--blue-deep);
+  border: 1px solid rgba(28, 88, 140, 0.2);
+}
+
+.member-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.member-role {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-2);
+}
+
+.member-desc {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: #777777;
+  line-height: 1.6;
+}
+
+/* ── RESPONSIVIDADE TEAM ── */
+
+@media (max-width: 1024px) {
+  .team-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}

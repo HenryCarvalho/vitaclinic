@@ -1,0 +1,124 @@
+/* ============================================
+   FEATURES SECTION — BLUE CARDS
+   ============================================ */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.feature-card {
+  position: relative;
+  background: var(--blue-darker);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-10);
+  overflow: hidden;
+  transition: all var(--duration-moderate) var(--ease-elegant);
+}
+
+/* Borda superior dourada (oculta por padrão) */
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-gold);
+  opacity: 0;
+  transition: opacity var(--duration-moderate) var(--ease-elegant);
+}
+
+/* Brilho radial no fundo (oculto por padrão) */
+.feature-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(212, 175, 55, 0.04) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-slow) var(--ease-elegant);
+  pointer-events: none;
+}
+
+/* Efeito Hover do Cartão */
+.feature-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(212, 175, 55, 0.08);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-card:hover::after {
+  opacity: 1;
+}
+
+.feature-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: var(--space-6);
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  color: var(--gold);
+}
+
+.feature-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+  color: var(--white);
+}
+
+.feature-card-desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: rgba(252, 250, 250, 0.55);
+  line-height: 1.7;
+}
+
+.feature-card-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--gold-muted);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-5);
+}
+
+/* ── RESPONSIVIDADE FEATURES ── */
+
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
