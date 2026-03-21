@@ -96,8 +96,6 @@ export function About() {
                 <p>Supremo Tribunal Federal, a mais alta corte e instância do poder judiciário brasileiro.</p>
               </div>
             </div>
-            
-            {/* Adicione os outros 6 hotspots aqui, alterando o top e left! */}
 
           </div>
 
@@ -130,11 +128,29 @@ export function About() {
                 Desenvolvemos interfaces limpas e fluxos de trabalho otimizados para que médicos, 
                 recepcionistas e pacientes gastem menos tempo com burocracia e mais tempo com o que realmente importa.
               </p>
-
-
             </div>
           </div>
 
+        </div>
+
+        {/* ===================*/}
+        {/* CARTÃO DA DIRETORA */}
+        {/* ===================*/}
+        <div className="director-card reveal" style={{ marginTop: 'var(--space-16)' }}>
+          <img
+            src="/assets/images/avatars/Dra. Lisa Cuddy.jpg" 
+            alt="Dra. Lisa Cuddy" 
+            className="director-avatar" 
+          />
+          <div className="director-info">
+            <h3 className="director-name">Dra. Lisa Cuddy</h3>
+            <div className="director-role">Diretora da Clínica</div>
+            <p className="director-desc">
+              Responsável pela direção geral e supervisão de auditoria completa
+              de ações, garantindo que o sistema cumpra rigorosamente as normas
+              de conformidade e excelência operacional.
+            </p>
+          </div>
         </div>
 
       </div>
