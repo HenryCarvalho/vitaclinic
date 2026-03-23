@@ -12,7 +12,7 @@ export function Loader() {
 
   return (
     <div className={`loader ${hidden ? 'hidden' : ''}`} id="loader">
-      <img src="/assets/images/logo/logo.png" alt="VitaClinic" className="loader-logo" />
+      <img src="/assets/images/logo/logo.png" alt="Neuro Vita" className="loader-logo" />
       <div className="loader-bar"><div className="loader-bar-fill"></div></div>
     </div>
   );

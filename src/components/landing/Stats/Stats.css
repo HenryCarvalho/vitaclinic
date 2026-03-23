@@ -57,3 +57,16 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Estado inicial (escondido) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* Estado quando o JS entra em ação */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

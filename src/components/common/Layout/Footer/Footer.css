@@ -1,98 +1,138 @@
 /* ============================================
-   FOOTER SECTION
+   FOOTER SECTION — NEURO VITA STYLE
    ============================================ */
 
 .footer {
-  padding: var(--space-16) var(--space-8) var(--space-8);
-  border-top: 1px solid #e8e8e8;
-  background: #ffffff;
+  background-color: #ffffff;
+  padding: 80px 0 40px;
+  border-top: 1px solid #eeeeee;
+  /* Opcional: sombra interna para profundidade */
+  box-shadow: inset 0 10px 20px -10px rgba(0, 0, 0, 0.05); 
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: var(--space-10);
-  margin-bottom: var(--space-12);
-}
-
-.footer-brand p {
-  font-size: 0.85rem;
-  color: #999999;
-  line-height: 1.7;
-  margin-top: var(--space-4);
-  max-width: 300px;
-}
-
-.footer-col-title {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: var(--space-5);
-}
-
-.footer-links {
-  list-style: none;
+.footer-content {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+/* ── LOGO (RESOLVE O PROBLEMA DA LOGO GIGANTE) ── */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.footer-logo img {
+  height: 40px; /* Define um tamanho fixo para a logo não estourar */
+  width: auto;
+}
+
+.footer-logo .blue-text {
+  color: #007BFF;
+}
+
+/* ── DESCRIÇÃO DA MARCA ── */
+.footer-brand {
+  flex: 1;
+  max-width: 350px;
+}
+
+.footer-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ── GRID DE LINKS (ORGANIZAÇÃO DAS COLUNAS) ── */
+.footer-links-container {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-column h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #000;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.footer-column ul {
+  list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.footer-links a {
-  font-size: 0.85rem;
-  color: #999999;
+.footer-column ul li a {
   text-decoration: none;
-  transition: color var(--duration-fast);
+  color: #777;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
-  color: var(--gold);
+.footer-column ul li a:hover {
+  color: #007BFF; /* Hover azul Neuro Vita */
+}
+
+/* ── DIVISOR E RODAPÉ INFERIOR ── */
+.footer-divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin-bottom: 30px;
 }
 
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: var(--space-8);
-  border-top: 1px solid #e8e8e8;
-  font-size: 0.75rem;
-  color: #999999;
+  font-size: 0.85rem;
+  color: #999;
 }
 
-.footer-legal {
+.footer-security {
   display: flex;
-  gap: var(--space-6);
+  align-items: center;
+  gap: 15px;
 }
 
-.footer-legal a {
-  color: #999999;
-  text-decoration: none;
-  transition: color var(--duration-fast);
+.footer-security .dot {
+  color: #007BFF;
 }
 
-.footer-legal a:hover {
-  color: var(--gold);
-}
-
-/* ── RESPONSIVIDADE FOOTER ── */
+/* ── RESPONSIVIDADE ── */
 
 @media (max-width: 1024px) {
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
+  .footer-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .footer-brand {
+    max-width: 100%;
   }
 }
 
 @media (max-width: 768px) {
-  .footer-grid {
+  .footer-links-container {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
   
   .footer-bottom {
     flex-direction: column;
-    gap: var(--space-4);
+    gap: 20px;
     text-align: center;
   }
 }

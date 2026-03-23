@@ -6,9 +6,19 @@ export function About() {
     <section className="section section-light" id="about">
       <div className="container">
         
+        {/* CABEÇALHO: Fora do grid para ocupar o topo todo */}
+        <div className="section-header centered reveal">
+          <span className="section-label">Desde 2012 · Brasília - DF</span>
+          <h2 className="section-title">Neuro Vita</h2>
+          <h3 className="section-subtitle">
+            Unir o que a tecnologia tem de melhor à sensibilidade do cuidado humano.
+          </h3>
+          <hr className="divider-gold centered" />
+        </div>
+
         <div className="about-split-layout">
           
-          {/* LADO ESQUERDO: Imagem de Brasília com Interatividade */}
+          {/* LADO ESQUERDO: Imagem com os 9 Pins */}
           <div className="about-image-wrapper reveal from-left">
             <img 
               src="/assets/images/illustrations/Brasilia.png" 
@@ -16,103 +26,103 @@ export function About() {
               className="brasilia-map"
             />
             
-            {/* 1. Palácio do Itamaraty (Meio-Esquerda) */}
+            {/* 1. Palácio do Itamaraty */}
             <div className="hotspot" style={{ top: '45%', left: '15%' }}>
               <div className="hotspot-pin"></div>
               <div className="glass-card">
                 <h4>Palácio do Itamaraty</h4>
-                <p>Sede das Relações Exteriores, famoso por seus arcos e belos espelhos d'água.</p>
+                <p>Sede das Relações Exteriores, famoso por seus arcos e espelhos d'água.</p>
               </div>
             </div>
 
-            {/* 2. Palácio do Planalto (Topo-Esquerda) */}
+            {/* 2. Palácio do Planalto */}
             <div className="hotspot" style={{ top: '25%', left: '28%' }}>
               <div className="hotspot-pin"></div>
               <div className="glass-card">
                 <h4>Palácio do Planalto</h4>
-                <p>Local de trabalho da Presidência da República, obra-prima de Oscar Niemeyer.</p>
+                <p>Local de trabalho da Presidência, obra-prima de Oscar Niemeyer.</p>
               </div>
             </div>
 
-            {/* 3. TCU - Tribunal de Contas (Inferior-Esquerda) */}
+            {/* 3. TCU */}
             <div className="hotspot" style={{ top: '65%', left: '28%' }}>
               <div className="hotspot-pin"></div>
               <div className="glass-card">
                 <h4>TCU</h4>
-                <p>Tribunal de Contas da União, guardião e fiscal do patrimônio e recursos públicos.</p>
+                <p>Fiscal do patrimônio e dos recursos públicos federais.</p>
               </div>
             </div>
 
-            {/* 4. Congresso Nacional (Centro exato) */}
-            <div className="hotspot" style={{ top: '40%', left: '50%' }}>
-              <div className="hotspot-pin"></div>
+            {/* 4. Congresso Nacional */}
+            <div className="hotspot" style={{ top: '50%', left: '50%' }}>
+              <div className="hotspot-pin main-location"></div>
               <div className="glass-card">
-                <h4>Congresso Nacional</h4>
-                <p>Sede do poder legislativo brasileiro, abrigando a Câmara dos Deputados e o Senado.</p>
+                <h4>Congresso</h4>
+                <p>Sede do poder legislativo, o ícone máximo da capital.</p>
               </div>
             </div>
 
-            {/* 5. Ponte JK (Topo, ao fundo) */}
+            {/* 5. Ponte JK */}
             <div className="hotspot" style={{ top: '10%', left: '45%' }}>
               <div className="hotspot-pin"></div>
               <div className="glass-card">
                 <h4>Ponte JK</h4>
-                <p>Com seus icônicos arcos assimétricos, cruza o Lago Paranoá com elegância premiada.</p>
+                <p>Icônicos arcos assimétricos sobre o Lago Paranoá.</p>
               </div>
             </div>
 
-            {/* 6. Parque da Cidade (Inferior-Centro) */}
+            {/* 6. Parque da Cidade */}
             <div className="hotspot" style={{ top: '80%', left: '50%' }}>
               <div className="hotspot-pin"></div>
               <div className="glass-card">
                 <h4>Parque da Cidade</h4>
-                <p>Um dos maiores parques urbanos do mundo, o verdadeiro coração verde de Brasília.</p>
+                <p>O maior parque urbano do mundo e coração verde da cidade.</p>
               </div>
             </div>
 
-            {/* 7. Catedral Metropolitana (Inferior-Direita) */}
+            {/* 7. Catedral Metropolitana */}
             <div className="hotspot" style={{ top: '70%', left: '65%' }}>
               <div className="hotspot-pin"></div>
               <div className="glass-card">
                 <h4>Catedral Metropolitana</h4>
-                <p>Com seus 16 pilares curvos de concreto, lembra mãos voltadas aos céus em prece.</p>
+                <p>16 pilares curvos que lembram mãos em prece aos céus.</p>
               </div>
             </div>
 
-            {/* 8. Memorial JK (Topo-Direita) */}
+            {/* 8. Memorial JK */}
             <div className="hotspot" style={{ top: '28%', left: '72%' }}>
               <div className="hotspot-pin"></div>
               <div className="glass-card">
                 <h4>Memorial JK</h4>
-                <p>Museu projetado em homenagem a Juscelino Kubitschek, o visionário fundador da cidade.</p>
+                <p>Homenagem a Juscelino Kubitschek, o fundador visionário.</p>
               </div>
             </div>
 
-            {/* 9. STF - Supremo Tribunal (Meio-Direita) */}
+            {/* 9. STF */}
             <div className="hotspot" style={{ top: '45%', left: '85%' }}>
               <div className="hotspot-pin"></div>
               <div className="glass-card">
                 <h4>STF</h4>
-                <p>Supremo Tribunal Federal, a mais alta corte e instância do poder judiciário brasileiro.</p>
+                <p>Supremo Tribunal Federal, a instância máxima do judiciário.</p>
               </div>
             </div>
 
+            {/* 10. Céu de Brasília */}
+            <div className="hotspot" style={{ top: '10%', left: '20%' }}>
+              <div className="hotspot-pin"></div>
+              <div className="glass-card">
+                <h4>Céu de Brasília</h4>
+                <p>Céu de Brasília: imenso, limpo e impossível de ignorar.</p>
+              </div>
+            </div>
           </div>
 
-          {/* LADO DIREITO: O Novo Texto */}
+          {/* LADO DIREITO: Texto Institucional */}
           <div className="about-text-content reveal from-right">
-            <div className="about-text-header">
-              <span className="about-date">✦ Desde 2012 · Brasília - DF</span>
-              <h2 className="about-title-main">VitaClinic</h2>
-              <h3 className="about-title-sub">
-                Unir o que a tecnologia tem de melhor à sensibilidade do cuidado humano.
-              </h3>
-            </div>
-            
             <div className="about-body">
               <p>
-                Fundada em Brasília - DF, em 2012, a VitaClinic nasceu com um propósito 
-                claro: unir o que a tecnologia tem de melhor à sensibilidade do cuidado humano.
+                Fundada em Brasília - DF, em 2012, a <strong>Neuro Vita</strong> nasceu com um propósito 
+                claro: unir o que a tecnologia tem de melhor à sensibilidade do cuidado humano...
               </p>
               <p>
                 Mais do que uma plataforma de gestão em saúde, somos uma ponte entre a 
@@ -124,20 +134,16 @@ export function About() {
                 quem mais importa: as pessoas.
               </p>
               <p>
-                A tecnologia só é poderosa se for acessível. 
-                Desenvolvemos interfaces limpas e fluxos de trabalho otimizados para que médicos, 
-                recepcionistas e pacientes gastem menos tempo com burocracia e mais tempo com o que realmente importa.
+                A tecnologia só é poderosa se for acessível. Desenvolvemos interfaces limpas 
+                para que médicos e pacientes gastem menos tempo com burocracia.
               </p>
             </div>
           </div>
-
         </div>
 
-        {/* ===================*/}
         {/* CARTÃO DA DIRETORA */}
-        {/* ===================*/}
-        <div className="director-card reveal" style={{ marginTop: 'var(--space-16)' }}>
-          <img
+        <div className="director-card reveal">
+          <img 
             src="/assets/images/avatars/Dra. Lisa Cuddy.jpg" 
             alt="Dra. Lisa Cuddy" 
             className="director-avatar" 
@@ -146,9 +152,8 @@ export function About() {
             <h3 className="director-name">Dra. Lisa Cuddy</h3>
             <div className="director-role">Diretora da Clínica</div>
             <p className="director-desc">
-              Responsável pela direção geral e supervisão de auditoria completa
-              de ações, garantindo que o sistema cumpra rigorosamente as normas
-              de conformidade e excelência operacional.
+              Responsável pela direção geral e supervisão de auditoria completa, 
+              garantindo conformidade e excelência operacional.
             </p>
           </div>
         </div>

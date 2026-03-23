@@ -1,234 +1,200 @@
 /* ============================================
-   ABOUT SECTION — LAYOUT DIVIDIDO E HOTSPOTS
+   ABOUT SECTION — ESTRUTURA E HOTSPOTS
    ============================================ */
 
+/* ADICIONE ISTO TEMPORARIAMENTE NO TOPO DO ABOUT.CSS */
+
+.section-light {
+  background-color: #ffffff !important;
+  position: relative;
+  z-index: 50;
+  padding: var(--space-20) 0;
+  width: 100%;
+  display: block;
+}
+
+.section-light .container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.section-header.centered {
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+.section-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text-dark-secondary);
+  max-width: 700px;
+  margin: var(--space-4) auto;
+}
+
+/* --- GRID LAYOUT --- */
 .about-split-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: var(--space-12);
   align-items: center;
 }
 
-/* ── LADO ESQUERDO: IMAGEM INTERATIVA ── */
+/* --- MAPA E PINS --- */
 .about-image-wrapper {
   position: relative;
   width: 100%;
-  border-radius: var(--radius-2xl);
-  overflow: visible; /* Permite que o cartão de vidro saia um pouco da imagem se necessário */
+  overflow: visible;
 }
 
 .brasilia-map {
   width: 100%;
   height: auto;
-  display: block;
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Os "Pins" que ficam sobre a imagem */
 .hotspot {
   position: absolute;
-  /* O transform garante que o ponto central do pin fique exatamente na coordenada top/left */
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
   z-index: 10;
-  cursor: pointer;
 }
 
-/* A bolinha pulsante */
 .hotspot-pin {
   width: 16px;
   height: 16px;
-  background-color: var(--gold);
-  border-radius: 50%;
+  background-color: var(--gold); /* Se você mudou o valor de --gold para azul no :root, está ok */
   border: 2px solid #ffffff;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-  transition: all 0.3s ease;
+  border-radius: 50%;
+  /* AJUSTE: Sombra agora azul para combinar com o novo tema */
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.6); 
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .hotspot:hover .hotspot-pin {
-  transform: scale(1.3);
-  background-color: #ffffff;
-  border-color: var(--gold);
+  transform: scale(1.4);
 }
 
-/* O Cartão de Vidro (Glassmorphism) Oculto por Padrão */
+/* --- TOOLTIP DE VIDRO (Glassmorphism) --- */
 .glass-card {
   position: absolute;
-  bottom: 30px; /* Aparece acima do pin */
+  bottom: 60px; 
   left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  width: 220px;
-  padding: var(--space-4);
+  transform: translateX(-50%) translateY(10px) translateZ(0);
   
-  /* Efeito de Vidro! */
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  width: max-content;
+  min-width: 280px;
+  max-width: 350px; /* Aumentei para não cortar nomes como Itamaraty */
+  white-space: normal;
   
-  /* Escondido por padrão */
+  padding: 22px;           
+  background: rgba(255, 255, 255, 0.85); 
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  /* AJUSTE: Borda sutil azulada */
+  border: 1px solid rgba(0, 123, 255, 0.2); 
+  border-radius: var(--radius-xl);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+  
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s var(--ease-elegant);
-  pointer-events: none; /* Evita que o rato pisque ao passar do pin para o card */
+  pointer-events: none;
   text-align: center;
+  z-index: 9999 !important; 
 }
 
-/* Revelar o cartão quando o rato passa no hotspot */
+/* Revelar o cartão e forçá-lo para frente no Hover */
 .hotspot:hover .glass-card {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0); 
+  /* 4. TRANSLATEZ(1px): Força o navegador a desenhar o card numa camada superior */
+  transform: translateX(-50%) translateY(0) translateZ(1px);
 }
+
 
 .glass-card h4 {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   color: var(--black);
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   font-weight: 700;
+  line-height: 1.2;
+  display: block;
 }
 
+/* Ajuste na Descrição */
 .glass-card p {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: var(--text-dark);
-  line-height: 1.4;
-  margin: 0;
-}
-
-/* ── LADO DIREITO: TEXTO ── */
-.about-text-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.about-text-header {
-  text-align: center; 
-  margin-bottom: var(--space-8);
-}
-
-.about-date {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: var(--space-3);
-}
-
-.about-title-main {
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--black);
-  margin-bottom: var(--space-2);
-}
-
-.about-title-sub {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: var(--text-dark-secondary);
   line-height: 1.5;
-  max-width: 90%;
-  margin: 0 auto;
+  text-align: center;
 }
 
-.about-body {
-  /* Texto Justificado */
-  text-align: justify;
-}
-
+/* --- TEXTO DIREITO --- */
 .about-body p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--text-dark);
   line-height: 1.8;
   margin-bottom: var(--space-4);
+  text-align: justify;
 }
 
-/* ── RESPONSIVIDADE ── */
-@media (max-width: 1024px) {
-  .about-split-layout {
-    grid-template-columns: 1fr; 
-    gap: var(--space-8);
-  }
-}
-
-/* ============================================
-   ABOUT SECTION — CARTÃO DA DIRETORA (Lisa Cuddy)
-   ============================================ */
-
-/* 1. O Cartão (Contêiner) */
+/* --- CARTÃO DA DIRETORA (Acabamento Azul) --- */
 .director-card {
-  display: flex; 
-  align-items: center; 
-  gap: var(--space-8); 
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
   padding: var(--space-8);
   background: #f8f8f8;
-  border: 1px solid #e8e8e8; 
-  border-radius: var(--radius-2xl); 
-  box-shadow: var(--shadow-sm); 
-  
-  /* Garante que o cartão não quebre em telas pequenas */
-  flex-wrap: wrap;
+  border: 1px solid #eeeeee;
+  border-radius: var(--radius-2xl);
+  margin-top: var(--space-16);
 }
 
-/* 2. A Foto (Avatar) */
 .director-avatar {
-
-  width: 150px; 
+  width: 150px;
   height: 150px;
-  
-  border-radius: var(--radius-xl); 
-  object-fit: cover; 
-  flex-shrink: 0; 
-  border: 3px solid var(--gold);
-  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-xl);
+  object-fit: cover;
+  /* AJUSTE: Borda azul da diretora */
+  border: 3px solid var(--gold); 
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
 }
 
-/* 3. A Área de Texto */
 .director-info {
-  flex: 1; 
-  min-width: 280px; 
+  flex: 1;
+} /* FECHAMENTO QUE FALTAVA AQUI */
 
 .director-name {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.6rem;
   color: var(--black);
-  margin-bottom: var(--space-1);
 }
 
 .director-role {
-  font-size: 0.9rem;
-  font-weight: 600;
+  color: var(--gold); /* Azul se a variável foi alterada */
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--gold);
-  margin-bottom: var(--space-4);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em; /* Mais espaçado fica mais "chic" */
 }
 
-.director-desc {
-  font-size: 1rem;
-  color: var(--text-dark);
-  line-height: 1.7;
+@media (max-width: 1024px) {
+  .about-split-layout { grid-template-columns: 1fr; }
+  .director-card { flex-direction: column; text-align: center; }
 }
 
-/* ── RESPONSIVIDADE DO CARTÃO ── */
-@media (max-width: 768px) {
-  .director-card {
-    flex-direction: column; 
-    text-align: center;
-    gap: var(--space-4);
-    padding: var(--space-6);
-  }
+/* Estado inicial (escondido) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
 
-  .director-avatar {
- 
-    width: 120px;
-    height: 120px;
-  }
+/* Estado quando o JS entra em ação */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }

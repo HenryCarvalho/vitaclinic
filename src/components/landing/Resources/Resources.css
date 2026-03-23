@@ -1,0 +1,62 @@
+.section-dark {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.section-dark .section-title {
+  color: var(--text-light);
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+.resource-card {
+  background: rgba(255, 255, 255, 0.08); /* Clareou um pouco o fundo do cartão */
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Borda mais visível */
+  transition: all 0.3s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--gold);
+}
+
+.resource-icon {
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: var(--space-6);
+}
+
+.resource-title {
+  color: #ffffff;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-serif); /* Mantém o título elegante */
+  font-size: 1.4rem;
+}
+
+.resource-desc {
+  color: rgba(255, 255, 255, 0.85); /* Texto mais legível */
+  font-family: 'Inter', sans-serif; /* Força a fonte moderna e limpa */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Estado inicial (escondido) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* Estado quando o JS entra em ação */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

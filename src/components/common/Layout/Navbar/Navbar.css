@@ -1,144 +1,106 @@
-/* ============================================
-   NAVBAR (HEADER) STYLES
-   ============================================ */
-
-.nav {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
   z-index: 1000;
-  padding: 0 var(--space-8);
-  height: 72px;
+  
+  /* --- EFEITO DE VIDRO ESCURO --- */
+  background: rgba(0, 0, 0, 0.6); /* Preto com 60% de opacidade */
+  backdrop-filter: blur(12px);    /* O desfoque do que está atrás */
+  -webkit-backdrop-filter: blur(12px); /* Suporte para Safari */
+  
+  /* Uma borda inferior bem sutil para dar profundidade */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.9);
+  height: 70px; /* Ela encolhe um pouquinho ao rolar */
+}
+
+.navbar .container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid #e8e8e8;
-  transition: all var(--duration-moderate) var(--ease-elegant);
+  align-items: center;
 }
 
-.nav.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  border-bottom-color: var(--border-gold);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-}
-
-.nav-logo {
+.navbar-logo {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  text-decoration: none;
-  color: var(--text-dark);
+  gap: 15px; /* Espaço entre a imagem e o texto */
+  cursor: pointer;
 }
 
-.nav-logo img {
-  height: 40px;
-  width: auto;
-  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
-}
-
-.nav-logo-text {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.nav-logo-text span {
-  background: var(--gradient-gold-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.nav-links {
+.navbar-links {
   display: flex;
-  align-items: center;
   gap: var(--space-8);
   list-style: none;
 }
 
-.nav-links a {
-  font-size: 0.85rem;
+.navbar-links a {
+  font-size: 0.95rem;
   font-weight: 500;
-  color: #666666;
-  text-decoration: none;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transition: color var(--duration-fast) var(--ease-elegant);
-  position: relative;
+  color: #ffffff;
+  transition: color 0.3s ease;
+  letter-spacing: -0.01em;
 }
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--gold);
-  transition: width var(--duration-moderate) var(--ease-elegant);
+.navbar-links a:hover {
+  color: var(--brand-blue);
 }
 
-.nav-links a:hover {
-  color: var(--gold);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-cta {
-  padding: 10px 28px;
-  background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--gold) !important;
-  border-radius: var(--radius-pill);
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all var(--duration-moderate) var(--ease-elegant);
-}
-
-.nav-cta:hover {
-  background: var(--gold) !important;
-  color: var(--black) !important;
-  box-shadow: var(--shadow-gold-md);
-}
-
-.nav-cta::after {
-  display: none !important;
-}
-
-/* ── ESTILOS PARA MOBILE ── */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
+.navbar-btn {
+  background-color: var(--brand-blue);
+  color: #ffffff;
   border: none;
-  cursor: pointer;
-  padding: 4px;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.nav-toggle span {
+.navbar-btn:hover {
+  background-color: var(--brand-blue-light);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);
+}
+
+.logo-img {
+  height: 90px; /* Define uma altura visível */
+  width: auto;  /* Mantém a proporção */
   display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--gold);
-  transition: all 0.3s;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .nav-toggle {
-    display: flex;
-  }
+.navbar-logo:hover .logo-img {
+  transform: scale(1.1);
+}
+
+.navbar-logo span {
+  color: var(--brand-blue);
+} 
+
+.navbar-logo {
+  color: #ffffff;
+  font-size: 1.8rem;
+}
+
+/* Estado inicial (escondido) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* Estado quando o JS entra em ação */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
